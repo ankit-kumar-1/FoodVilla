@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { FETCH_ALL_RESTAURANTS, restaurantList } from "../config";
 import RestaurantCard from "./RestaurantCard";
 import ShimmerEffect from "./ShimmerEffect";
@@ -6,12 +6,14 @@ import NotFound from "../assets/img/page-not-found-error-404.jpg"
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 
 
 const Body = () => {
     const [allRestaurants, setAllRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchTxt, setSearchTxt] = useState("");
+    const { user, setUser } = useContext(UserContext)
 
     useEffect(() => {
         //API CALL
@@ -22,8 +24,8 @@ const Body = () => {
         const data = await fetch(FETCH_ALL_RESTAURANTS);
         const json = await data.json();
         // console.log(json);
-        setAllRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setAllRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     }
 
@@ -57,6 +59,14 @@ const Body = () => {
                 >
                     search
                 </button>
+                <input className="p-2 m-2" value={user.name} onChange={(e) => setUser({
+                    ...user,
+                    name: e.target.value,
+                })} />
+                <input className="p-2 m-2" value={user.email} onChange={(e) => setUser({
+                    ...user,
+                    email: e.target.value,
+                })} />
             </div>
 
             <div className="restaurant-list flex flex-wrap">

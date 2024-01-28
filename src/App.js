@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState } from "react";
 import ReactDOM, { createRoot } from "react-dom/client";
 import Header from "./components/Header";    //default import
 // import { IMG_CDN_URL } from "./config";    //NAMED IMPORT
@@ -11,6 +11,8 @@ import Contact from "./components/Contact";
 import RestaurantsMenu from "./components/RestaurantsMenu";
 import Profile from "./components/ProfileClass";
 import ShimmerEffect from "./components/ShimmerEffect";
+import UserContext from "./utils/UserContext";
+
 
 const Instamart = lazy(() => import("./components/Instamart"));
 const About = lazy(() => import("./components/About"));
@@ -23,13 +25,23 @@ const About = lazy(() => import("./components/About"));
 //dynamic import
 
 const AppLayout = () => {
+    const [user, setUser] = useState(
+        {
+            name: "Ankit Kumar",
+            email: "ankitverma242001@gmail.com"
+        }
+    )
     return (
         // <React.Fragment>root</React.Fragment>
-        <>
+        <UserContext.Provider value={{
+            user: user,
+            setUser: setUser,
+        }}>
+
             <Header />
             <Outlet />
             <Footer />
-        </>
+        </UserContext.Provider>
     );
 };
 

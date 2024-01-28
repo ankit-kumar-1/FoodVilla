@@ -28,7 +28,7 @@ class About extends React.Component {
                 {/* <ProfileFunctionalComponent name={"Ankit"} /> */}
                 <Profile name={"AnkitClass"} />
                 <UserContext.Consumer>
-                    {({ user }) => <h4>{user.email}</h4>}
+                    {({ user }) => <h4 className=" font-bold text-xl">{user.email}</h4>}
                 </UserContext.Consumer>
             </div>
         )
