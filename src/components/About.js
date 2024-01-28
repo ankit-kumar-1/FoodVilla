@@ -2,6 +2,8 @@ import { Outlet } from "react-router-dom";
 import Profile from '/src/components/ProfileClass';
 import React from "react";
 import { render } from "react-dom";
+import UserContext from "../utils/UserContext";
+
 
 class About extends React.Component {
     constructor(props) {
@@ -25,6 +27,9 @@ class About extends React.Component {
                 {/* <Outlet /> */}
                 {/* <ProfileFunctionalComponent name={"Ankit"} /> */}
                 <Profile name={"AnkitClass"} />
+                <UserContext.Consumer>
+                    {({ user }) => <h4>{user.email}</h4>}
+                </UserContext.Consumer>
             </div>
         )
     }
