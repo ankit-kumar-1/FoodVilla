@@ -19,6 +19,7 @@ const RestaurantsMenu = () => {
                 <h2>{restaurant.city}</h2>
                 <h2>{restaurant.avgRating} stars</h2>
                 <h2>{restaurant.costForTwoMessage}</h2>
+                <div>{restaurant.menu}</div>
             </div>
 
 

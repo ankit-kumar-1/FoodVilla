@@ -24,8 +24,8 @@ const Body = () => {
         const data = await fetch(FETCH_ALL_RESTAURANTS);
         const json = await data.json();
         // console.log(json);
-        setAllRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setAllRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
     }
 
@@ -39,8 +39,8 @@ const Body = () => {
 
 
     return (allRestaurants?.length == 0) ? <ShimmerEffect /> : (filteredRestaurants?.length == 0) ? <img src={NotFound} alt="" /> : (
-        <>
-            <div className=" p-5 m-4 bg-pink-50 my-5">
+        <div className="bg-gray-200 mx-4">
+            <div className=" p-5 my-5">
                 <input
                     type="text"
                     className=" p-2 rounded-md"
@@ -72,11 +72,13 @@ const Body = () => {
             <div className="restaurant-list flex flex-wrap">
                 {filteredRestaurants.map((restaurant) => {
                     return (
-                        <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}> <RestaurantCard {...restaurant.info} /></Link>
+                        <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}>
+                            <RestaurantCard {...restaurant.info} />
+                        </Link>
                     );
                 })}
             </div>
-        </>
+        </div>
     );
 };
 
