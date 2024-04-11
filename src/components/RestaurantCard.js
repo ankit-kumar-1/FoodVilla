@@ -22,7 +22,7 @@ const RestaurantCard = ({
             <h4>{sla?.slaString}</h4>
             <h4>{costForTwo}</h4>
             <h5>{avgRating} stars</h5>
-            <h5 className=" font-bold">{user.name}-{user.email}</h5>
+            <h5 className=" font-bold">{user.name}</h5>
         </div>
 
     );

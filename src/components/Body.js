@@ -40,7 +40,7 @@ const Body = () => {
 
     return (allRestaurants?.length == 0) ? <ShimmerEffect /> : (filteredRestaurants?.length == 0) ? <img src={NotFound} alt="" /> : (
         <div className="bg-gray-200 mx-4">
-            <div className=" p-5 my-5">
+            <div className=" p-5 my-5 ml-7">
                 <input
                     type="text"
                     className=" p-2 rounded-md"
@@ -59,17 +59,17 @@ const Body = () => {
                 >
                     search
                 </button>
-                <input className="p-2 m-2" value={user.name} onChange={(e) => setUser({
+                <input className="p-2 m-2 rounded-md" value={user.name} onChange={(e) => setUser({
                     ...user,
                     name: e.target.value,
                 })} />
-                <input className="p-2 m-2" value={user.email} onChange={(e) => setUser({
+                {/* <input className="p-2 m-2" value={user.email} onChange={(e) => setUser({
                     ...user,
                     email: e.target.value,
-                })} />
+                })} /> */}
             </div>
 
-            <div className="restaurant-list flex flex-wrap">
+            <div className="restaurant-list flex flex-wrap ml-8">
                 {filteredRestaurants.map((restaurant) => {
                     return (
                         <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}>
